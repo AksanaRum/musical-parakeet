@@ -22,7 +22,7 @@ class UserSerializer(serializers.Serializer):
 class TeamSerializer(serializers.Serializer):
     id = ObjectIdField(read_only=True)
     name = serializers.CharField(max_length=100)
-    members = ObjectIdField(many=True)
+    members = serializers.ListField(child=ObjectIdField(), required=False)
     created_at = serializers.DateTimeField(read_only=True)
 
 # Activity Serializer
