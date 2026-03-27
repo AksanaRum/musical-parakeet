@@ -1,39 +1,29 @@
-from rest_framework.test import APITestCase
-from django.urls import reverse
-from .models import User, Team, Activity, Leaderboard, Workout
+from django.test import TestCase
+from .models import User, Team, Activity, Workout, Leaderboard
 
-class UserTests(APITestCase):
-    def test_create_user(self):
-        url = reverse('user-list')
-        data = {'username': 'testuser', 'email': 'test@example.com', 'password': 'testpass123'}
-        response = self.client.post(url, data, format='json')
-        self.assertEqual(response.status_code, 201)
-
-class TeamTests(APITestCase):
+class BasicModelTest(TestCase):
     def test_create_team(self):
-        url = reverse('team-list')
-        data = {'name': 'Test Team'}
-        response = self.client.post(url, data, format='json')
-        self.assertEqual(response.status_code, 201)
+        team = Team.objects.create(name='Test Team')
+        self.assertEqual(str(team), 'Test Team')
 
-class ActivityTests(APITestCase):
+    def test_create_user(self):
+        team = Team.objects.create(name='Test Team')
+        user = User.objects.create(name='Test User', email='test@example.com', team=team)
+        self.assertEqual(str(user), 'test@example.com')
+
     def test_create_activity(self):
-        # This test assumes a user exists
-        user = User.objects.create_user(username='activityuser', password='pass')
-        url = reverse('activity-list')
-        data = {'user': user.id, 'type': 'run', 'duration': 30, 'distance': 5.0}
-        response = self.client.post(url, data, format='json')
-        self.assertIn(response.status_code, [201, 400])
+        team = Team.objects.create(name='Test Team')
+        user = User.objects.create(name='Test User', email='test@example.com', team=team)
+        activity = Activity.objects.create(user=user, type='run', duration=30, date='2023-01-01')
+        self.assertEqual(activity.type, 'run')
 
-class LeaderboardTests(APITestCase):
-    def test_leaderboard(self):
-        url = reverse('leaderboard-list')
-        response = self.client.get(url)
-        self.assertEqual(response.status_code, 200)
-
-class WorkoutTests(APITestCase):
     def test_create_workout(self):
-        url = reverse('workout-list')
-        data = {'name': 'Morning Cardio', 'description': 'Cardio session', 'duration': 45}
-        response = self.client.post(url, data, format='json')
-        self.assertIn(response.status_code, [201, 400])
+        team = Team.objects.create(name='Test Team')
+        workout = Workout.objects.create(name='Pushups', description='Do 20 pushups')
+        workout.suggested_for.add(team)
+        self.assertEqual(workout.name, 'Pushups')
+
+    def test_create_leaderboard(self):
+        team = Team.objects.create(name='Test Team')
+        leaderboard = Leaderboard.objects.create(team=team, points=100)
+        self.assertEqual(leaderboard.points, 100)
