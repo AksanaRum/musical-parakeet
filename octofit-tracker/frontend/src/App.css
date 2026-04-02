@@ -1,0 +1,139 @@
+.App {
+  min-height: 100vh;
+  background: linear-gradient(130deg, #020024 0%, #090979 47%, #00d4ff 100%);
+  color: #f8f9fa;
+}
+
+.container {
+  max-width: 1100px;
+}
+
+.navbar-dark .navbar-brand,
+.navbar-dark .navbar-nav .nav-link {
+  color: #fff;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: #ffdd57;
+}
+
+.bg-gradient {
+  background: linear-gradient(90deg, #007bff, #6610f2);
+}
+
+.octofit-logo {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.card {
+  border-radius: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+  color: #f8f9fa;
+}
+
+.card .card-title {
+  color: #ffd457;
+}
+
+h1,
+h2,
+.card-title,
+.navbar-brand {
+  color: #fde047;
+}
+
+.lead,
+.btn-link,
+.text-secondary,
+.table {
+  color: #e7e8ea;
+}
+
+.table {
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.16);
+}
+
+.btn-primary {
+  background-color: #ff8000;
+  border-color: #ff8000;
+}
+
+.btn-primary:hover,
+.btn-outline-primary:hover {
+  background-color: #ff9f1a;
+  border-color: #ff9f1a;
+}
+
+.btn-danger,
+.btn-success,
+.btn-secondary,
+.btn-light {
+  font-weight: 600;
+}
+
+.btn-link {
+  color: #a8e0ff;
+}
+
+.btn-link:hover {
+  color: #fff;
+}
+
+.modal-content {
+  background: linear-gradient(120deg, rgba(0, 0, 0, 0.85), rgba(12, 20, 30, 0.95));
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-title {
+  color: #ffd457;
+}
+
+.modal-body label,
+.form-label,
+input.form-control {
+  color: #f0f0f0;
+}
+
+input.form-control {
+  background: rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.3);
+  color: #fff;
+}
+
+input.form-control:focus {
+  background: rgba(255,255,255,.24);
+  border-color: #ffd457;
+  box-shadow: none;
+}
+
+.btn {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.app-link {
+  color: #80e8ff;
+}
+
+.modal-backdrop.show {
+  opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+  .display-6 {
+    font-size: 2rem;
+  }
+}
