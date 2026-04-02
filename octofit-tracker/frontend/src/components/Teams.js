@@ -13,7 +13,7 @@ export default function TeamsComponent() {
         setLoading(true);
         setError(null);
 
-        const res = await fetch('http://localhost:8000/api/teams', {
+        const res = await fetch('https://$REACT_APP_CODESPACE_NAME-8000.app.github.dev/api/teams', {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
